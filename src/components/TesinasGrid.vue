@@ -31,25 +31,26 @@ export default {
   methods: {
     tesinaToCell(tesina, key) {
       switch (key) {
-        case "alumnos":
+        case "alumnos": {
           const alumnos = tesina[key].length ? tesina[key] : ["-"];
           return (alumnos
             .map(
               alumno => alumno.nombre + " " + alumno.apellido)
             .reduce(
               (acum, fullname) => acum + "; " + fullname));
-          break;
-        case "codirector":
+        }
+        case "codirector": {
           return (tesina[key] ? tesina[key] : "-");
-          break;
-        case "estado":
+        }
+        case "estado": {
           const estado = this.estados.find(e => e.id === tesina[key]);
           return (estado 
             ? estado.nombre + (tesina['nota'] ? `; Nota: ${tesina['nota']}` : "")
             : "-");
-          break;
-        default:
+        }
+        default: {
           return tesina[key];
+        }
       }
     }
   }
