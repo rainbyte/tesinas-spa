@@ -8,6 +8,7 @@
           {{ estado.nombre }}
         </option>
       </select>
+
       <label for="text-alumno">Número de Alumno</label>
       <input type="text" name="text-alumno" id="text-alumno"
         v-model="qryAlumno" pattern="\d{1,5}\/\d"
@@ -36,5 +37,22 @@ export default {
 </script>
 
 <style scoped>
+  form {
+    align-items: baseline;
+    display: grid;
+    grid-column-gap: 0.5em;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    margin-bottom: 0.5em;
+  }
 
+  form * {
+    font-size: 1.1em;
+  }
+
+  @media screen and (max-width: 600px) {
+    form {
+      grid-template-columns: auto 40%;
+    }
+  }
 </style>

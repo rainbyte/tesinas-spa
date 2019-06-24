@@ -10,7 +10,7 @@
       </thead>
       <tbody>
         <tr v-for="tesina in tesinas" v-bind:key="tesina.id">
-          <td v-for="key in columns" v-bind:key="key">
+          <td v-for="key in columns" v-bind:key="key" v-bind:data-label="key">
             {{ tesinaToCell(tesina, key) }}
           </td>
         </tr>
@@ -60,65 +60,90 @@ export default {
 <style scoped>
   body {
     font-family: Helvetica Neue, Arial, sans-serif;
-    font-size: 14px;
-    color: #444;
+    line-height: 1.25;
   }
 
   table {
     border: 2px solid #42b983;
+    border-collapse: collapse;
     border-radius: 3px;
     background-color: #fff;
+    margin: 0 auto;
+    padding: 0;
   }
 
-  th {
+  table caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  table th {
     background-color: #42b983;
     color: rgba(255,255,255,0.66);
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
   }
 
-  th:first-letter {
-    text-transform: capitalize;
+  table tr {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
   }
 
   td {
     background-color: #f9f9f9;
   }
 
-  th, td {
-    min-width: 120px;
-    padding: 10px 20px;
+  table th, table td {
+    padding: .625em;
+    text-align: center;
   }
 
-  th.active {
-    color: #fff;
-  }
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+      width: 90%;
+    }
 
-  th.active .arrow {
-    opacity: 1;
-  }
-
-  .arrow {
-    display: inline-block;
-    vertical-align: middle;
-    width: 0;
-    height: 0;
-    margin-left: 5px;
-    opacity: 0.66;
-  }
-
-  .arrow.asc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 4px solid #fff;
-  }
-
-  .arrow.dsc {
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid #fff;
+    table caption {
+      font-size: 1.3em;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border: 2px solid #42b983;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+      min-width: 30%;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
   }
 </style>
