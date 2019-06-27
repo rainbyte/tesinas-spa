@@ -14,7 +14,7 @@ import TesinasGrid from './components/TesinasGrid.vue'
 
 import axios from 'axios'
 
-const BASE_URL = 'grupo51.proyecto2018.linti.unlp.edu.ar/scripts/tesinas.php'
+const BASE_URL = 'https://grupo51.proyecto2018.linti.unlp.edu.ar/scripts/tesinas.php'
 //const BASE_URL = 'http://localhost:1025/scripts/tesinas.php'
 
 export default {
