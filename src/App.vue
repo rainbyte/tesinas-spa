@@ -39,7 +39,7 @@ export default {
   methods: {
     updateTesinas(qryEstado, qryAlumno) {
       const url = BASE_URL + '/tesinas'
-        + (qryAlumno ? `/alumno/${qryAlumno}`: "");
+        + (qryAlumno ? `/alumno/${qryAlumno.replace('/','-')}`: "");
       axios.get(url)
         .then(res => {
           this.tesinas = (qryEstado 
