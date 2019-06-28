@@ -1,7 +1,7 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' && process.env.CORDOVA_PLATFORM !== 'android'
-    ? '/spa-tesinas'
-    : '/',
+  publicPath: process.env.CORDOVA_PLATFORM === 'android'
+    ? ''
+    : (process.env.NODE_ENV === 'production' ? '/spa-tesinas' : '/'),
 
   devServer: {
     https: true,
